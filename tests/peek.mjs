@@ -1,0 +1,15 @@
+import { chromium } from '/workspace/booking-demo/node_modules/playwright-core/index.mjs';
+const BASE = 'http://127.0.0.1:8796/';
+const b = await chromium.launch({ executablePath: '/usr/bin/google-chrome', args: ['--no-sandbox'] });
+const p = await b.newPage({ viewport: { width: 1280, height: 769 } });
+const errs = []; p.on('console', m => m.type() === 'error' && errs.push(m.text())); p.on('pageerror', e => errs.push(e.message));
+await p.goto(BASE); await p.waitForTimeout(800);
+await p.screenshot({ path: '/tmp/qd-full.png', fullPage: true });
+await p.locator('#calculator').scrollIntoViewIfNeeded(); await p.evaluate(() => document.getElementById('calculator').scrollIntoView());
+await p.click('[data-value=deep]'); await p.click('[data-testid=next]'); await p.waitForTimeout(300);
+await p.screenshot({ path: '/tmp/qd-step2.png' });
+const m = await b.newPage({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 1 });
+await m.goto(BASE); await m.evaluate(() => document.getElementById('calculator').scrollIntoView()); await m.waitForTimeout(600);
+await m.screenshot({ path: '/tmp/qd-mobile.png' });
+console.log('errors:', errs);
+await b.close();
