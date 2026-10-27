@@ -48,8 +48,8 @@ const stepIs = (page, id) => page.locator(`[data-step=${id}]`).waitFor({ timeout
 {
   const { ctx, page, reqs, errors } = await newPage();
   const T = 'Zed Testperson', E = 'zed.e2e@example.com', Z = '99999', N = 'NOTE-e2e-secret';
-  ok((await page.locator('[data-testid=demo-banner]').count()) === 0, 'no top demo banner');
-  ok((await page.locator('[data-testid=demo-footer]').innerText()).includes('Website by Ivan Litvin · sample prices'), 'footer credit text');
+  ok((await page.locator('[data-testid=demo-banner]').innerText()).includes('Demo website by Ivan Litvin · fictional business, sample prices'), 'top demo banner text');
+  ok((await page.locator('[data-testid=demo-footer]').innerText()).includes('Demo website by Ivan Litvin · fictional business, sample prices'), 'footer demo text');
   ok((await total(page)) === $(expected({ service: 'standard', bedrooms: 2, bathrooms: 1 }).total), 'initial default estimate ' + (await total(page)));
 
   await page.click('[data-value=deep]');
@@ -99,7 +99,7 @@ const stepIs = (page, id) => page.locator(`[data-step=${id}]`).waitFor({ timeout
   await page.locator('[data-testid=summary]').waitFor();
   await page.waitForTimeout(800);
   const sum = await page.locator('[data-testid=summary]').innerText();
-  ok(/Request not sent/.test(sum), 'summary shows "Request not sent"');
+  ok(/Demo — request not sent/.test(sum), 'summary shows "Demo — request not sent"');
   ok(/Your estimate/.test(sum) && sum.includes($(expA.total)), 'summary "Your estimate" with total ' + $(expA.total));
   ok(/Final price confirmed after a short written brief/.test(sum), 'summary mentions written brief');
   ok((await page.locator('[data-testid=lead-preview]').innerText()).includes(E), 'lead preview shows the request details');
