@@ -250,7 +250,7 @@ export default function Calculator() {
                   <div className="grid gap-5 sm:grid-cols-2">
                     <p className="flex gap-2 rounded-2xl bg-amber-50 p-4 text-sm text-amber-950 sm:col-span-2">
                       <CircleAlert className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
-                      <span><strong>Demo form:</strong> nothing you type here is sent or saved. Feel free to use made-up details.</span>
+                      <span><strong>Please note:</strong> nothing you type here is sent or saved. Feel free to use made-up details.</span>
                     </p>
                     <Field id="f-name" label="Your name" error={err('name')}>
                       <input id="f-name" type="text" autoComplete="off" value={q.name} onChange={(e) => set('name', e.target.value)} aria-invalid={!!err('name') || undefined} aria-describedby={describedBy('f-name', false, err('name'))} className={inputCls(!!err('name'))} placeholder="Alex Sample" />
@@ -360,7 +360,7 @@ function Total({ est, big }: { est: Estimate; big?: boolean }) {
   );
 }
 
-const fine = 'Sample prices for a fictional business. Final price confirmed after a short written brief.';
+const fine = 'Sample prices. Final price confirmed after a short written brief.';
 
 function LiveSummary({ q, est }: { q: QuoteData; est: Estimate }) {
   return (
@@ -432,7 +432,7 @@ function SummaryScreen({ q, est, headingRef, onEdit, onRestart }: { q: QuoteData
     <section aria-labelledby="estimate-title" className="p-5 sm:p-8" data-testid="summary">
       <div role="status" className="flex gap-3 rounded-2xl border border-amber-300 bg-amber-50 p-4 text-amber-950">
         <CircleAlert className="mt-0.5 size-5 shrink-0" aria-hidden="true" />
-        <p><strong>Demo — request not sent.</strong> This is a portfolio demo: nothing was sent anywhere. On a real site, this request would arrive in the owner’s inbox as a ready-to-quote lead.</p>
+        <p><strong>Request not sent.</strong> This form is not connected, so nothing was sent anywhere. On a live business site, this request would arrive in the owner’s inbox as a ready-to-quote lead.</p>
       </div>
       <h3 id="estimate-title" ref={headingRef} tabIndex={-1} className="mt-6 text-3xl font-bold tracking-tight text-ink">Your estimate</h3>
       <p className="mt-1 text-slate-600">Thanks, {q.name.trim().split(/\s+/)[0]}. Here is the estimate for your request.</p>
@@ -455,7 +455,7 @@ function SummaryScreen({ q, est, headingRef, onEdit, onRestart }: { q: QuoteData
       </div>
       <p className="mt-6 flex gap-2 rounded-2xl bg-slate-50 p-4 text-sm text-slate-700">
         <Mail className="mt-0.5 size-4 shrink-0 text-teal-800" aria-hidden="true" />
-        <span><strong className="text-ink">Final price confirmed after a short written brief.</strong> The business replies by email to check the details, then confirms the price in writing. Prices shown are samples for a fictional business.</span>
+        <span><strong className="text-ink">Final price confirmed after a short written brief.</strong> The business replies by email to check the details, then confirms the price in writing. Prices shown are samples.</span>
       </p>
       <div className="mt-6 flex flex-wrap gap-3">
         <button type="button" onClick={onEdit} className="btn-ghost"><Pencil className="size-4" aria-hidden="true" /> Edit request</button>
@@ -481,7 +481,7 @@ function LeadPreview({ q, est }: { q: QuoteData; est: Estimate }) {
           <Inbox className="size-5 text-teal-300" aria-hidden="true" />
           <div>
             <h3 id="lead-title" className="font-semibold">What the owner would receive</h3>
-            <p className="text-xs text-slate-300">Lead preview · demo, not sent</p>
+            <p className="text-xs text-slate-300">Lead preview · not sent</p>
           </div>
         </div>
         <div className="p-5 text-sm">

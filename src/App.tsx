@@ -3,7 +3,7 @@ import Calculator from './components/Calculator.tsx';
 import { pricing, type FrequencyId, type ServiceId } from './pricing.ts';
 import { money } from './lib/estimate.ts';
 
-const DEMO_LINE = 'Demo website by Ivan Litvin · fictional business, sample prices';
+const DEMO_LINE = 'Website by Ivan Litvin · sample prices';
 
 export default function App() {
   const services = Object.keys(pricing.services) as ServiceId[];
@@ -12,16 +12,12 @@ export default function App() {
     <>
       <a href="#calculator" className="skip-link">Skip to the estimate calculator</a>
       <header>
-      <p className="bg-ink px-4 py-2 text-center text-sm font-medium text-white" data-testid="demo-banner">
-        {DEMO_LINE}
-      </p>
-
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-5">
         <a href="#top" className="flex items-center gap-2.5 rounded-lg font-bold text-ink">
           <span aria-hidden="true" className="grid size-9 place-items-center rounded-xl bg-gradient-to-br from-teal-600 to-sky-600 text-white shadow-md shadow-teal-700/25">
             <Leaf className="size-5" />
           </span>
-          <span className="leading-tight">Mintleaf<span className="block text-xs font-medium text-slate-600">Home Cleaning · fictional</span></span>
+          <span className="leading-tight">Mintleaf<span className="block text-xs font-medium text-slate-600">Home Cleaning</span></span>
         </a>
         <nav aria-label="Main">
           <ul className="flex items-center gap-1 text-sm font-semibold sm:gap-2">
@@ -118,7 +114,7 @@ minimumPrice: ${pricing.minimumPrice},`}</code></pre>
           <p className="text-sm font-semibold uppercase tracking-wider text-teal-800">Generated from the config</p>
           <h2 id="prices-title" className="mt-2 text-3xl font-bold tracking-tight text-ink">Sample prices</h2>
           <p className="mt-3 max-w-2xl text-slate-700">
-            These are <strong>example prices</strong> for a fictional business. A real business sets its own, and the prices are easy for the owner to adjust.
+            These are <strong>example prices</strong>. A business sets its own, and the prices are easy for the owner to adjust.
           </p>
           <div className="mt-8 grid gap-6 lg:grid-cols-3">
             <div className="overflow-x-auto rounded-3xl border border-slate-200 bg-white p-2 lg:col-span-2" tabIndex={0} role="region" aria-label="Sample prices by service (scrollable table)">
@@ -176,9 +172,9 @@ minimumPrice: ${pricing.minimumPrice},`}</code></pre>
           <h2 id="faq-title" className="text-3xl font-bold tracking-tight text-ink">Questions</h2>
           <div className="mt-6 space-y-3">
             {[
-              { q: 'Is this a real cleaning company?', a: 'No. Mintleaf Home Cleaning is a fictional business made for a web development portfolio. Prices are samples and the form sends nothing.' },
+              { q: 'Is this a real cleaning company?', a: 'No. Mintleaf Home Cleaning is a web development portfolio project by Ivan Litvin. Prices are samples and the form sends nothing.' },
               { q: 'Is the estimate the final price?', a: 'It is an estimate based on what you entered. The final price is confirmed after a short written brief, by email.' },
-              { q: 'Where does my request go?', a: 'In this demo, nowhere: nothing is sent. Your choices stay only in this browser so a refresh does not lose them; contact details are never saved. A real site would deliver the request to the owner’s inbox.' },
+              { q: 'Where does my request go?', a: 'Nowhere: on this site nothing is sent. Your choices stay only in this browser so a refresh does not lose them; contact details are never saved. A real site would deliver the request to the owner’s inbox.' },
               { q: 'Can the calculator match my own pricing?', a: 'Yes. Services, rates, discounts, extras and rules are set in one config file, so a business can use its own prices and options.' },
             ].map((f) => (
               <details key={f.q} className="group rounded-2xl border border-slate-200 bg-white p-5 open:shadow-sm">
@@ -195,7 +191,7 @@ minimumPrice: ${pricing.minimumPrice},`}</code></pre>
       <footer className="border-t border-slate-200 bg-white pb-28 lg:pb-0">
         <div className="mx-auto flex max-w-6xl flex-col gap-3 px-5 py-8 text-sm text-slate-600 sm:flex-row sm:items-center sm:justify-between">
           <p className="font-semibold text-ink" data-testid="demo-footer">{DEMO_LINE}</p>
-          <p>Contact (fictional): <a className="font-medium text-teal-800 underline underline-offset-2" href="mailto:hello@example.com">hello@example.com</a></p>
+          <p>Contact: <a className="font-medium text-teal-800 underline underline-offset-2" href="mailto:hello@example.com">hello@example.com</a></p>
         </div>
       </footer>
     </>
